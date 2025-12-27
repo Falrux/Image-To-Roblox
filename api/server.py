@@ -204,13 +204,19 @@ def send_gif():
 def send_image():
     data = request.get_json()
     url, key = data.get("image_url"), data.get("button_clicked")
-    if not url or not key:
-        return jsonify({"status": "error", "message": "need image_url and button_clicked"}), 400
+
+    if not key:
+        return jsonify({"status": "error", "message": "missing button"}), 400
 
     path = os.path.join(Config.INPUT, "image.png")
-    ok, msg = safe_download(url, path)
-    if not ok:
-        return jsonify({"status": "error", "message": msg}), 400
+
+    if key != "dev":
+        if not url:
+            return jsonify({"status": "error", "message": "missing image_url"}), 400
+
+        ok, msg = safe_download(url, path)
+        if not ok:
+            return jsonify({"status": "error", "message": msg}), 400
 
     if not run_script(key):
         return jsonify({"status": "error", "message": "script failed"}), 500
