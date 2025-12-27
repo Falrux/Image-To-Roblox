@@ -41,6 +41,7 @@ class Config:
     }
 
     COMPRESSION = {
+        "dev": (3.2, 50),
         "ehigh": (1.6, 25),
         "high": (3.2, 50),
         "mid": (6.4, 100),
@@ -73,6 +74,7 @@ class Config:
     ]
 
     ALLOWED_SCRIPTS = {
+        "dev": ["python3", "render-image.py", "3.2", "50"],
         "nocompression": ["python3", "no-compression.py"],
         "ehigh": ["python3", "render-image.py", "1.6", "25"],
         "high": ["python3", "render-image.py", "3.2", "50"],
