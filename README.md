@@ -287,6 +287,7 @@ For obtaining direct image urls, I recommended to use [Postimages.org](https://p
 - [picsur.org](https://picsur.org/upload) — Supports GIF uploads.
 - [pixhost.to](https://pixhost.to/) — Supports GIF uploads.
 - [catbox.moe](https://catbox.moe/) — Supports GIF uploads.
+- [whalebox.moe](https://whalebox.moe/) — Supports GIF uploads.
 - [litterbox.catbox.moe](https://litterbox.catbox.moe/) — Supports GIF uploads.
 - [endpot.com](https://i.endpot.com/) — Supports GIF uploads.
 - [dc.missuo.ru](https://dc.missuo.ru/) — Supports GIF uploads.
