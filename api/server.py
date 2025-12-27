@@ -31,7 +31,7 @@ class Config:
     GIF_NAME = "downloaded.gif"
 
     SIZES = {
-        "": (120, 120),
+        "dev": (120, 120),
         "nocompression": (500, 500),  # ts new btw 🤑
         "ehigh": (240, 240),
         "high": (120, 120),
@@ -41,7 +41,7 @@ class Config:
     }
 
     COMPRESSION = {
-        "": (3.2, 50),
+        "dev": (3.2, 50),
         "ehigh": (1.6, 25),
         "high": (3.2, 50),
         "mid": (6.4, 100),
@@ -74,7 +74,7 @@ class Config:
     ]
 
     ALLOWED_SCRIPTS = {
-        "": ["python3", "render-image.py", "3.2", "50"],
+        "dev": ["python3", "render-image.py", "3.2", "50"],
         "nocompression": ["python3", "no-compression.py"],
         "ehigh": ["python3", "render-image.py", "1.6", "25"],
         "high": ["python3", "render-image.py", "3.2", "50"],
@@ -216,11 +216,11 @@ def send_image():
     if key != "dev":
         if not url:
             return jsonify({"status": "error", "message": "missing image_url"}), 400
-    
+
         ok, msg = safe_download(url, path)
         if not ok:
             return jsonify({"status": "error", "message": msg}), 400
-    
+
     if not run_script(key):
         return jsonify({"status": "error", "message": "script failed"}), 500
 
