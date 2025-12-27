@@ -31,6 +31,7 @@ class Config:
     GIF_NAME = "downloaded.gif"
 
     SIZES = {
+        "dev": (120, 120),
         "nocompression": (500, 500),  # ts new btw 🤑
         "ehigh": (240, 240),
         "high": (120, 120),
