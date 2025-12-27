@@ -60,6 +60,7 @@ class Config:
         "img86.pixhost.to",
         "files.catbox.moe",
         "litter.catbox.moe",
+        "s3.whalebox.moe",
         "s3.amazonaws.com",
         "images2.imgbox.com",
         "i.endpot.com",
