@@ -31,7 +31,7 @@ class Config:
     GIF_NAME = "downloaded.gif"
 
     SIZES = {
-        "dev": (120, 120),
+        "": (120, 120),
         "nocompression": (500, 500),  # ts new btw 🤑
         "ehigh": (240, 240),
         "high": (120, 120),
@@ -41,7 +41,7 @@ class Config:
     }
 
     COMPRESSION = {
-        "dev": (3.2, 50),
+        "": (3.2, 50),
         "ehigh": (1.6, 25),
         "high": (3.2, 50),
         "mid": (6.4, 100),
@@ -69,12 +69,12 @@ class Config:
         "dc.missuo.ru",
         "s3.gifyu.com",
         "i2.paste.pics",
-        "s6.imgcdn.dev",
+        "s6.imgcdn.",
         "docs.google.com",
     ]
 
     ALLOWED_SCRIPTS = {
-        "dev": ["python3", "render-image.py", "3.2", "50"],
+        "": ["python3", "render-image.py", "3.2", "50"],
         "nocompression": ["python3", "no-compression.py"],
         "ehigh": ["python3", "render-image.py", "1.6", "25"],
         "high": ["python3", "render-image.py", "3.2", "50"],
@@ -216,14 +216,13 @@ def send_image():
     if key != "dev":
         if not url:
             return jsonify({"status": "error", "message": "missing image_url"}), 400
-
+    
         ok, msg = safe_download(url, path)
         if not ok:
             return jsonify({"status": "error", "message": msg}), 400
-
-    if key != "dev":
-        if not run_script(key):
-            return jsonify({"status": "error", "message": "script failed"}), 500
+    
+    if not run_script(key):
+        return jsonify({"status": "error", "message": "script failed"}), 500
 
     lua = get_lua(os.path.join(Config.OUTPUT, "image.lua"))
     return (
