@@ -213,7 +213,15 @@ def send_image():
 
     path = os.path.join(Config.INPUT, "image.png")
 
-    if key != "dev":
+    if key == "dev":
+        if url:
+            try:
+                r = requests.get(url, timeout=10)
+                r.raise_for_status()
+                open(path, "wb").write(r.content)
+            except Exception as e:
+                return jsonify({"status": "error", "message": f"download failed: {e}"}), 400
+    else:
         if not url:
             return jsonify({"status": "error", "message": "missing image_url"}), 400
 
