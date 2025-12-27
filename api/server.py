@@ -219,8 +219,9 @@ def send_image():
         if not ok:
             return jsonify({"status": "error", "message": msg}), 400
 
-    if not run_script(key):
-        return jsonify({"status": "error", "message": "script failed"}), 500
+    if key != "dev":
+        if not run_script(key):
+            return jsonify({"status": "error", "message": "script failed"}), 500
 
     lua = get_lua(os.path.join(Config.OUTPUT, "image.lua"))
     return (
